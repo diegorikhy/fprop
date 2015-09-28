@@ -1,0 +1,54 @@
+//
+// Chromatron pagination
+// --------------------------------------------------
+
+
+.pagination {
+	height: auto;
+	ul {
+		margin: -5px 0 0;
+		.box-shadow(none);
+		.border-radius(@baseBorderRadius);
+		.clearfix();
+		li {
+			display: block;
+			float: left;
+			margin: 5px -1px 0 0;
+			&:first-child a {
+				.border-radius(@baseBorderRadius);
+			}
+			&:last-child a {
+				.border-radius(@baseBorderRadius);
+			}
+			a {
+				border-width: 1px;
+				.chromaButtonBackground(@white, @bodyBackground, @gray);
+				border-color: rgba(0,0,0,0.2) rgba(0,0,0,0.2) rgba(0,0,0,0.25);
+				text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+				.box-shadow(~"0 1px 2px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(255, 255, 255, 0.3) inset");
+				line-height: 24px;
+				padding: 0 10px;
+				.border-radius(@baseBorderRadius);
+			}
+			&.active {
+				margin: 5px 0 0 1px;
+			}
+			&.active a,
+			&.active a:hover {
+				background-color: lighten(desaturate(@templateColor, 10%), 15%);
+				.buttonBackground(lighten(desaturate(@templateColor, 10%), 15%), @templateColor, @white, 0 1px 2px rgba(0,0,0,0.5));
+				border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+				.box-shadow(~"0 1px 2px @grayLight, 0 1px 2px rgba(255, 255, 255, 0.3) inset");
+			}
+			&.disabled > span,
+			&.disabled a,
+			&.disabled a:hover {
+				background-color: @white;
+				.buttonBackground(@white, @bodyBackground, @gray, 0 1px 2px rgba(0,0,0,0.3));
+				border-color: rgba(0,0,0,0.2) rgba(0,0,0,0.2) rgba(0,0,0,0.25);
+				.box-shadow(0 1px 2px rgba(0, 0, 0, 0.08));
+				.opacity(50);
+			}
+		}
+	}
+}

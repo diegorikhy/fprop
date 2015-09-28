@@ -1,0 +1,37 @@
+//
+// Chromatron filter bar
+// --------------------------------------------------
+
+
+.filter-bar .form-inline {
+	margin-bottom: @baseMargin;
+	fieldset {
+		padding: 0;
+		background: @widgetBackgroundColor;
+		border-color: @widgetBorderColor;
+	}
+	.control-group,
+	.controls {
+		margin-bottom: 0;
+		display: inline-block;
+	}
+	.control-group {
+		padding: @baseMargin / 2;
+		border-right: 1px solid darken(@widgetBorderColor, 2%);
+		&:last-child {
+			border-right: none;
+		}
+	}
+	.control-label {
+		margin: 0 @baseMargin / 2 0 0;
+	}
+	.help-inline {
+		margin-left: @baseMargin / 2;
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+	.input-mini {
+		width: 30px;
+	}
+}

@@ -1,0 +1,93 @@
+//
+// Chromatron widgets
+// --------------------------------------------------
+
+
+.widgets-container {
+	margin: -@baseMargin / 2 0 @baseMargin -@baseMargin / 2;
+	.clearfix();
+}
+.widget {
+	float: left;
+	display: block;
+	padding: 5px;
+	margin: @baseMargin / 2 0 0 @baseMargin / 2;
+	font-size: @fontSizeSmall;
+	border: 1px solid @widgetBorderColor;
+	background-color: @widgetBackgroundColor;
+	.size(35px, 155px);
+	.border-radius(@baseBorderRadius);
+	.clearfix();
+	a {
+		display: block;
+	}
+	span {
+		float: left;
+		display: block;
+		text-align: center;
+		font-size: @baseFontSize * 3;
+		line-height: 35px;
+		margin-right: @baseMargin / 2;
+		.size(35px, 36px);
+	}
+	p {
+		float: left;
+		margin: 0;
+		color: @navigationColor;
+	}
+	strong {
+		font-size: @baseFontSize + 7;
+		display: block;
+		line-height: @baseLineHeight + 2;
+		sup {
+			top: -0.2em;
+		}
+	}
+	&.text-only p {
+		padding-left:5px;
+	}
+	&.add-new-widget {
+		border-style: dashed;
+		background-color: @addWidgetBackgroundColor;
+		strong {
+			line-height: 35px;
+			[class^="awe-"], [class*=" awe-"] {
+				margin: 0 5px 0 5px;
+			}
+		}
+		a {
+			color: @addWidgetColor;
+			&:hover {
+				color: @templateColor;
+				text-decoration: none;
+			}
+		}
+	}
+	&.increase span,
+	&.decrease span {
+		.hide-text();
+		background-position: 0 0;
+		background-repeat: no-repeat;
+	}
+	&.increase {
+		p strong {
+			color: @green;
+		}
+		span {
+			background-image: url("@{widgetIncreasePath}");
+		}
+	}
+	&.decrease {
+		p strong {
+			color: @red;
+		}
+		span {
+			background-image: url("@{widgetDecreasePath}");
+		}
+	}
+	.close {
+		position: relative;
+		top: -4px;
+		right: 0;
+	}
+}

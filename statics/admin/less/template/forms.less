@@ -1,0 +1,99 @@
+//
+// Chromatron forms
+// --------------------------------------------------
+
+
+form {
+	margin-bottom: @baseMargin;
+	background: none;
+	.border-radius(@baseBorderRadius);
+	&:only-of-type {
+		margin: 0;
+	}
+}
+legend {
+	padding: 0 @baseMargin / 2;
+	margin: 0;
+	border: none;
+	width: auto;
+	color: @headingsColor;
+}
+legend + .control-group {
+	margin-top: 0;
+}
+fieldset {
+	background: none;
+	padding: @baseMargin;
+	border: 1px solid @bodyBackground;
+	.border-radius(@baseBorderRadius);
+}
+.form-actions {
+	margin-bottom: 0;
+	padding: 0;
+	background: none;
+	border: none;
+}
+label {
+	font-weight: bold;
+	color: @headingsColor;
+	&.radio,
+	&.checkbox {
+		font-weight: normal;
+		color: @textColor;
+	}
+}
+input[type="radio"],
+input[type="checkbox"] {
+	margin-top: 3px;
+}
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	.box-shadow(inset 0 0 4px @navNestedBackground);
+	&:focus {
+		border-color: darken(@inputBorder, 5%);
+		.box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0,0,0,0.2)");
+	}
+}
+.control-group:last-child {
+	margin-bottom: 0;
+}
+.row-fluid form [class*="span"] {
+	min-height: 28px;
+}
+.nested {
+	fieldset {
+		border-color: @dataNestedBorderColor;
+	}
+	label {
+		color: @headingsColor;
+		&.radio,
+		&.checkbox {
+			color: @dataNestedTextColor;
+		}
+	}
+}
+.ie8 {
+	.row-fluid form [class*="span"] {
+		min-height: 18px;
+	}
+}
+.ie9 {
+	input[type="radio"],
+	input[type="checkbox"] {
+		margin-top: 0;
+	}
+}

@@ -1,0 +1,28 @@
+//
+// Chromatron alerts
+// --------------------------------------------------
+
+
+.alert {
+	h4 {
+		margin: 0;
+	}
+	&.alert-white {
+		background-color: @white;
+		border-color: @bodyBackground;
+		color: @grayLight;
+		h4 {
+			color: @grayLight;
+		}
+	}
+	&.alert-inverse {
+		background-color: @templateDark;
+		border-color: #000;
+		color: @white;
+		text-shadow: none;
+		h4,
+		.close {
+			color: @white;
+		}
+	}
+}

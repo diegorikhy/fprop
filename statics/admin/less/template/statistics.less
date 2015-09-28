@@ -1,0 +1,48 @@
+//
+// Chromatron statistics
+// --------------------------------------------------
+
+
+.stats {
+	margin: 0 0 @baseMargin;
+	padding: 0;
+	list-style: none;
+	&:only-of-type {
+		margin: 0;
+	}
+	li {
+		display: block;
+		padding: 5px;
+		margin-bottom: @baseMargin / 2;
+		height: 33px;
+		border: 1px solid darken(@bodyBackground, 5%);
+		line-height: normal;
+		background-color: @bodyBackground;
+		.border-radius(@baseBorderRadius);
+		.clearfix();
+	}
+	.stats-view {
+		float: right;
+		margin: 3px 1px 0 0;
+	}
+	.stats-count {
+		float: left;
+		display: block;
+		min-width: 70px;
+		text-align: right;
+		line-height: 33px;
+		font-size: @baseFontSize * 2;
+		padding-right: @baseMargin / 2;
+		color: @headingsColor;
+		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+	}
+	p {
+		float: left;
+		margin: 0;
+		line-height: 33px;
+		color: @grayLight;
+	}
+}
+.nested .stats li {
+	background-color: @white;
+}

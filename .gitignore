@@ -1,0 +1,6 @@
+application/config/database.php
+.sass-cache/
+*.css.map
+application/config/config.php
+statics/site/images/
+uploads/

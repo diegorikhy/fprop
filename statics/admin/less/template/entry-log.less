@@ -1,0 +1,49 @@
+//
+// Chromatron entry log
+// --------------------------------------------------
+
+
+.entry {
+	border: 1px solid darken(@bodyBackground, 5%);
+	padding: @baseMargin / 2;
+	background-color: @bodyBackground;
+	.border-radius(@baseBorderRadius);
+	& + .entry {
+		margin-top: @baseMargin / 2;
+	}
+	.entry-header {
+		margin: 0;
+		line-height: normal;
+		font-size: @baseFontSize + 5;
+		.clearfix();
+		time,
+		.entry-timestamp {
+			margin-top: 5px;
+			font-size: @fontSizeSmall;
+			font-weight: normal;
+			float: right;
+			color: @gray;
+			.opacity(75);
+		}
+		[class^="fam-"],
+		[class*=" fam-"] {
+			margin-top: 4px;
+		}
+	}
+	.entry-content {
+		margin: 0 0 @baseMargin / 4;
+	}
+	.entry-details {
+		margin: 0;
+		font-style: italic;
+		font-size: @fontSizeSmall;
+		.opacity(75);
+	}
+	time,
+	.entry-timestamp {
+		color: @gray;
+	}
+}
+.nested .entry {
+	background-color: @white;
+}

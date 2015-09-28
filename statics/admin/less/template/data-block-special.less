@@ -1,0 +1,48 @@
+//
+// Chromatron special data blocks 
+// --------------------------------------------------
+
+
+/* Data block todo list */
+.data-block.todo-block {
+	header {
+		margin-bottom: 0;
+	}
+	form {
+		margin: 0;
+		background-color: transparent;
+		border: none;
+		.box-shadow(none);
+	}
+	table {
+		margin: 0;
+		background-color: transparent;
+	}
+	table.table tr {
+		background-color: transparent;
+		&:first-child td {
+			border-top: 0;
+		}
+		&.done {
+			.opacity(40);
+			p {
+				text-decoration: line-through;
+			}
+			&:hover {
+				.opacity(100);
+			}
+		}
+		p {
+			margin: 0;
+			line-height: normal;
+			color: @gray;
+			& + span {
+				font-size: @fontSizeMini;
+				color: @grayLight;
+			}
+		}
+		input {
+			margin-top: 0;
+		}
+	}
+}

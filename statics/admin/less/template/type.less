@@ -1,0 +1,103 @@
+//
+// Chromatron typography
+// --------------------------------------------------
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	line-height: normal;
+	small {
+		font-weight: normal;
+	}
+	&:first-child {
+		margin-top: 0;
+	}
+}
+h1 {
+	font-size: @baseFontSize * 2;
+	margin: @baseMargin 0;
+}
+h2 {
+	font-size: @baseFontSize * 1.5;
+	margin: @baseMargin * 0.9 0;
+}
+h3 {
+	font-size: @baseFontSize * 1.15;
+	margin: @baseMargin * 0.8 0;
+}
+h4 {
+	font-size: @baseFontSize;
+	margin: @baseMargin * 0.7 0;
+}
+h5 {
+	font-size: @baseFontSize * 0.85;
+	text-transform: uppercase;
+	margin: @baseMargin * 0.6 0;
+}
+h6 {
+	font-size: @baseFontSize * 0.75;
+	text-transform: uppercase;
+	margin: @baseMargin * 0.5 0;
+}
+nav {
+	ul,
+	ol {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		list-style-image: none;
+	}
+}
+p {
+	line-height: 150%;
+	&.lead {
+		font-size: @fontSizeLarge + 2;
+		line-height: 145%;
+	}
+}
+q,
+blockquote {
+	border: none;
+	margin: 0;
+	padding: @baseMargin / 2 0 0 @baseMargin;
+	background-image: url("@{blockquoteBackground}");
+	background-position: top left;
+	background-repeat: no-repeat;
+}
+dl.dl-horizontal {
+	dt,
+	dd {
+		line-height: @baseLineHeight * 1.2;
+	}
+	dt {
+		width: 100px;
+	}
+	dd {
+		margin-left: 130px;
+	}
+}
+q.pull-right,
+blockquote.pull-right {
+	border: none;
+	padding: @baseMargin / 2 @baseMargin 0 0;
+	background-position: top right;
+}
+.label {
+	padding: 1px 4px;
+}
+.data-block ol,
+.data-block ul {
+	margin-bottom: @baseMargin;
+	ul,
+	ol {
+		margin-bottom: 0;
+	}
+}
+.data-block li {
+	line-height: @baseLineHeight + 2;
+}

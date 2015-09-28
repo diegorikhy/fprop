@@ -1,0 +1,47 @@
+//
+// Chromatron breadcrumbs
+// --------------------------------------------------
+
+
+.breadcrumb {
+	.reset-filter();
+	padding: 0;
+	background: none;
+	border: none;
+	display: block;
+	width: 100%;
+	margin-bottom: @baseMargin * 1.5;
+	font-size: @baseFontSize;
+	.border-radius(0);
+	.box-shadow(none);
+	a {
+		color: @grayLight;
+		text-shadow: none;
+		&:hover {
+			color: @linkColor;
+			text-decoration: none;
+		}
+	}
+	.active {
+		color: @grayLight;
+	}
+	li {
+		background-image: url("@{breadcrumbDivider}");
+		background-position: center right;
+		background-repeat: no-repeat;
+		padding-right: 10px;
+		& + li {
+			margin-left: 3px;
+		}
+		&:last-child {
+			background: none;
+			padding: 0;
+		}
+		&:first-child .awe-home {
+			font-size: @fontSizeLarge;
+		}
+	}
+}
+.widgets-container + .breadcrumb {
+	margin-top: -@baseMargin / 2;
+}

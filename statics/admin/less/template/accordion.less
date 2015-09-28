@@ -1,0 +1,45 @@
+//
+// Chromatron accordion
+// --------------------------------------------------
+
+
+.accordion {
+	border-bottom: 1px solid @bodyBackground;
+	.accordion-group {
+		border: none;
+		border-top: 1px solid @bodyBackground;
+		margin: 0;
+		.border-radius(0);
+	}
+	.accordion-toggle {
+		font-weight: bold;
+		font-size: @baseFontSize + 3;
+		color: @headingsColor;
+		padding: @baseMargin / 2 0;
+		.clearfix();
+		&:hover {
+			color: @templateColor;
+			text-decoration: none;
+			.caret {
+				border-top: 5px solid @templateColor;
+			}
+		}
+		.caret {
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-top: 5px solid @grayLight;
+			float: right;
+			margin: 7px 10px 0;
+		}
+	}
+	.accordion-inner {
+		padding: @baseMargin / 2 0 @baseMargin;
+		border: none;
+	}
+}
+.nested section .accordion {
+	border-bottom: 1px solid @dataNestedBorderColor;
+	.accordion-group {
+		border-top: 1px solid @dataNestedBorderColor;
+	}
+}

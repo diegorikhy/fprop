@@ -1,0 +1,40 @@
+//
+// Chromatron loadings
+// --------------------------------------------------
+
+
+.loading {
+	display: inline-block;
+	background-image: url("@{templateLoading}");
+	background-repeat: no-repeat;
+	background-position: center;
+	.hide-text();
+	.square(24px);
+	&.dark {
+		background-image: url("@{chromatronDarkLoading}");
+	}
+	&.red {
+		background-image: url("@{chromatronRedLoading}");
+	}
+	&.green {
+		background-image: url("@{chromatronGreenLoading}");
+	}
+	&.blue {
+		background-image: url("@{chromatronBlueLoading}");
+	}
+}
+.nested .loading {
+	background-image: url("@{templateNestedLoading}");
+	&.dark {
+		background-image: url("@{chromatronDarkNestedLoading}");
+	}
+	&.red {
+		background-image: url("@{chromatronRedNestedLoading}");
+	}
+	&.green {
+		background-image: url("@{chromatronGreenNestedLoading}");
+	}
+	&.blue {
+		background-image: url("@{chromatronBlueNestedLoading}");
+	}
+}

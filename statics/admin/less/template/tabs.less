@@ -1,0 +1,100 @@
+//
+// Chromatron tabs
+// --------------------------------------------------
+
+
+.tab-content {
+	overflow: visible;
+}
+.tabbable .tab-content {
+	overflow: auto;
+	.wysihtml5 {
+		width: 90% !important;
+	}
+}
+.nav-tabs {
+	border: none;
+	& > li {
+		margin-bottom: 0;
+		& > a {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+.tab-note {
+	width: 110px;
+	margin-top: @baseMargin / 2;
+	font-size: @baseFontSize - 3;
+	color: @grayLight;
+	p {
+		margin: 0;
+		line-height: normal;
+		& + p {
+			margin-top: @baseMargin / 2;
+		}
+	}
+}
+.tabs-left {
+	.tab-content {
+		padding-left: @baseMargin;
+		border-left: 1px solid @bodyBackground;
+	}
+	.tab-note {
+		clear: left;
+		float: left;
+	}
+	& > .nav-tabs {
+		border: none;
+		margin: 0;
+		.active > a,
+		.active > a:hover {
+			border: none;
+			color: @templateColor;
+			background-color: @white;
+			border-top: 1px solid @bodyBackground;
+			border-bottom: 1px solid @bodyBackground;
+		}
+		& > li > a {
+			min-width: 120px;
+			color: @gray;
+			.border-radius(0);
+			&:hover {
+				border-color: @white @bodyBackground @white @white;
+				background-color: @white;
+				color: @templateColor;
+			}
+		}
+	}
+}
+.tabs-right {
+	.tab-content {
+		padding-right: @baseMargin;
+		border-right: 1px solid @bodyBackground;
+	}
+	.tab-note {
+		clear: right;
+		float: right;
+	}
+	& > .nav-tabs {
+		border: none;
+		margin: 0;
+		.active > a,
+		.active > a:hover {
+			border: none;
+			color: @templateColor;
+			border-top: 1px solid @bodyBackground;
+			border-bottom: 1px solid @bodyBackground;
+		}
+		& > li > a {
+			min-width: 120px;
+			color: @gray;
+			.border-radius(0);
+			&:hover {
+				border-color: @white @white @white @bodyBackground;
+				background-color: @white;
+				color: @templateColor;
+			}
+		}
+	}
+}

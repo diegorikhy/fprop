@@ -1,0 +1,162 @@
+//
+// Demo styles
+// --------------------------------------------------
+
+/* Demo styles */
+.data-block .row-fluid.demo {
+	color: #fff;
+	line-height: 30px;
+	min-height: 30px;
+	text-align: center;
+	margin-bottom: 10px;
+	.border-radius(3px);
+	&:last-child div {
+		margin-bottom: 0;
+	}
+	& > div {
+		.border-radius(3px);
+		background-color: @templateColor;
+		& > .row,
+		& > .row-fluid {
+			& > div {
+				margin-bottom: 0;
+				.border-radius(3px);
+				background-color: darken(@templateColor, 10%);
+			}
+		}
+	}
+}
+
+.demo > input,
+.demo > select {
+	display: block !important;
+	margin-bottom: 10px;
+}
+
+.progress {
+	margin-bottom: 10px;
+}
+
+
+// Icons 
+// FamFamFam alternative icon set 
+[class^="fam-"],
+[class*=" fam-"] {
+	display: inline-block;
+	width: 17px;
+	height: 16px;
+	*margin-right: .3em;
+	line-height: 14px;
+	vertical-align: text-top;
+	background-image: url("@{iconFamFamFamPath}");
+	background-position: 14px 14px;
+	background-repeat: no-repeat;
+}
+[class^="fam-"]:last-child,
+[class*=" fam-"]:last-child {
+	*margin-left: 0;
+}
+
+// Main nav icons
+.fam-house {
+	background-position: -1302px -63px;
+}
+.fam-application-form {
+	background-position: -210px 0;
+}
+.fam-chart-line {
+	background-position: -1323px -21px;
+}
+.fam-application-view-columns {
+	background-position: -672px 0;
+}
+.fam-briefcase {
+	background-position: -1827px 0;
+}
+.fam-picture {
+	background-position: -420px -105px;
+}
+.fam-calendar-view-day {
+	background-position: -798px -21px;
+}
+.fam-rosette {
+	background-position: -1386px -105px;
+}
+.fam-text-padding-left {
+	background-position: -252px -126px;
+}
+.fam-cog {
+	background-position: -1659px -21px;
+}
+.fam-heart {
+	background-position: -1113px -63px;
+}
+.fam-rainbow {
+	background-position: -1029px -105px;
+}
+.fam-door-in {
+	background-position: -1155px -42px;
+}
+.fam-error {
+	background-position: -1617px -42px;
+}
+.fam-book-open {
+	background-position: -1743px 0;
+}
+
+// Table & Event icons
+.fam-page-white-zip {
+	background-position: -168px -105px;
+}
+.fam-page-white-wrench {
+	background-position: -147px -105px;
+}
+.fam-page-white-edit {
+	background-position: -1386px -84px;
+}
+.fam-page-white-medal {
+	background-position: -1701px -84px;
+}
+.fam-bullet-wrench {
+	background-position: -504px -21px;
+}
+.fam-database-save {
+	background-position: -798px -42px;
+}
+.fam-bomb {
+	background-position: -1512px 0;
+}
+.fam-flag-blue {
+	background-position: -189px -63px;
+}
+.fam-application-xp-terminal {
+	background-position: -819px 0;
+}
+
+// Typo icons
+.fam-tick {
+	background-position: -441px -126px;
+}
+.fam-cross {
+	background-position: -462px -42px;
+}
+.fam-add {
+	background-position: -21px 0;
+}
+.fam-delete {
+	background-position: -1050px -42px;
+}
+.fam-information {
+	background-position: -1491px -63px;
+}
+.fam-bullet-go {
+	background-position: -252px -21px;
+}
+
+// Docs styles
+.user-profile a {
+	span {
+		margin-right: 5px;
+		font-size: @baseFontSize;
+	}
+}

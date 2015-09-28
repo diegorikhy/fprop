@@ -1,0 +1,103 @@
+//
+// Chromatron gallery
+// --------------------------------------------------
+
+
+.data-block .thumbnails {
+	margin: 0;
+	.thumbnail {
+		background-color: @white;
+		.box-shadow(none);
+	}
+	&.raw {
+		.thumbnail {
+			border: none;
+			padding: 0;
+			.box-shadow(0 0 3px rgba(0,0,0,0.2));
+		}
+	}
+}
+.thumbnails {
+	& > li {
+		position: relative;
+		&:only-of-type {
+			float: none;
+			margin: 0 auto;
+		}
+		.thumbnail-actions {
+			margin: 0;
+			display: block;
+			position: absolute;
+			list-style: none;
+			bottom: 20px;
+			right: 10px;
+			color: @white;
+			background-color: @black;
+			.border-radius(@baseBorderRadius);
+			.clearfix();
+			.opacity(0);
+			li {
+				float: left;
+				padding: 2px 5px;
+				& + li {
+					border-left: 1px solid lighten(@black, 15%);
+				}
+				a {
+					line-height: normal;
+					display: block;
+					color: @white;
+					.opacity(80);
+					&:hover {
+						.opacity(100);
+						text-decoration: none;
+					}
+				}
+			}
+		}
+		&:hover .thumbnail-actions {
+			.opacity(85);
+		}
+	}
+	.thumbnail {
+		margin-bottom: 0;
+	}
+}
+.thumbnail {
+	border-color: @navImgBorder;
+	background-color: @white;
+	.box-shadow(0 0 3px rgba(0,0,0,.15));
+	.border-radius(0);
+	&:only-of-type {
+		margin-bottom: @baseMargin / 2;
+	}
+}
+
+// Form gallery
+.form-gallery {
+	background: none;
+	border: none;
+	.border-radius(none);
+	.box-shadow(none);
+	li input[type="checkbox"] {
+		margin: 0;
+		position: absolute;
+		top: 10px;
+		left: 10px;
+	}
+	.thumbnails .thumbnail {
+		background-color: @white;
+		&.active {
+			border-color: @templateColor;
+			background-color: lighten(@templateColor, 10%);
+		}
+	}
+	.form-actions {
+		padding: 0;
+		margin: 0;
+		border: none;
+		background: none;
+		[class*="span"] {
+			margin-bottom: 0;
+		}
+	}
+}

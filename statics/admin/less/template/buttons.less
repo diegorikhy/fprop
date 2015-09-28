@@ -1,0 +1,70 @@
+//
+// Chromatron buttons
+// --------------------------------------------------
+
+
+.btn.btn-flat {
+	padding: 3px 12px;
+	.transition(all 400ms ease);
+	.flatButtonBackground(darken(@btnBackground, 15%), @textColor);
+	&.btn-primary {
+		.flatButtonBackground(@btnPrimaryBackground, @white);
+	}
+	&.btn-warning {
+		.flatButtonBackground(@btnWarningBackground, @white);
+	}
+	&.btn-danger {
+		.flatButtonBackground(@btnDangerBackground, @white);
+	}
+	&.btn-success {
+		.flatButtonBackground(@btnSuccessBackground, @white);
+	}
+	&.btn-info {
+		.flatButtonBackground(@btnInfoBackground, @white);
+	}
+	&.btn-inverse {
+		.flatButtonBackground(@btnInverseBackground, @white);
+	}
+	&.btn-large {
+		padding: 6px 14px;
+	}
+	&.btn-small {
+		padding: 3px 9px;
+	}
+	&.btn-mini {
+		padding: 2px 6px;
+	}
+}
+.btn.btn-alt {
+	.border-radius(@baseBorderRadius);
+	.chromaButtonBackground(@white, @bodyBackground, @gray);
+	border-color: rgba(0,0,0,0.2) rgba(0,0,0,0.2) rgba(0,0,0,0.25);
+	text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	.box-shadow(~"0 1px 2px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(255, 255, 255, 0.3) inset");
+	&.btn-primary {
+		.chromaButtonBackground(lighten(desaturate(@templateColor, 10%), 15%), @templateColor, @white);
+	}
+	&.btn-warning {
+		.chromaButtonBackground(lighten(desaturate(@chromatronOrange, 10%), 15%), @chromatronOrange, @white);
+	}
+	&.btn-danger {
+		.chromaButtonBackground(lighten(desaturate(@chromatronRed, 10%), 15%), @chromatronRed, @white);
+	}
+	&.btn-success {
+		.chromaButtonBackground(lighten(desaturate(@chromatronGreen, 10%), 15%), @chromatronGreen, @white);
+	}
+	&.btn-info {
+		.chromaButtonBackground(lighten(desaturate(@chromatronBlue, 10%), 15%), @chromatronBlue, @white);
+	}
+	&.btn-inverse {
+		.chromaButtonBackground(lighten(desaturate(@templateDark, 10%), 15%), @templateDark, @white);
+	}
+}
+.btn.disabled,
+.btn[disabled] {
+	cursor: default;
+	background-color: darken(@white, 10%);
+	background-image: none;
+	.opacity(65);
+	.box-shadow(none);
+}

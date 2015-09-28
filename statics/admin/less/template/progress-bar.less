@@ -1,0 +1,60 @@
+//
+// Chromatron progress bar
+// --------------------------------------------------
+
+
+.progress {
+	margin-bottom: @baseMargin / 2;
+	background-image: none;
+	border: 1px solid #e0e0e0;
+	.border-radius(@baseBorderRadius);
+	.box-shadow(0 0px 3px rgba(0, 0, 0, 0.1) inset);
+	.reset-filter();
+	&:last-child {
+		margin-bottom: 0;
+	}
+	.bar:last-child {
+		.border-right-radius(@baseBorderRadius);
+	}
+	&.progress-line {
+		height: @baseLineHeight / 2;
+	}
+}
+.progress-striped .bar {
+	.background-size(30px 30px);
+}
+.progress-danger .bar, .progress .bar-danger {
+	background-color: @red;
+	border-color: @red;
+}
+.progress-danger.progress-striped .bar, .progress-striped .bar-danger {
+	#gradient > .striped(@red);
+}
+.progress-success .bar, .progress .bar-success {
+	background-color: @green;
+	border-color: @green;
+}
+.progress-success.progress-striped .bar, .progress-striped .bar-success {
+	#gradient > .striped(@green);
+}
+.progress-info .bar, .progress .bar-info {
+	background-color: @blue;
+	border-color: @blue;
+}
+.progress-info.progress-striped .bar, .progress-striped .bar-info {
+	#gradient > .striped(@blue);
+}
+.progress-warning .bar, .progress .bar-warning {
+	background-color: @orange;
+	border-color: @orange;
+}
+.progress-warning.progress-striped .bar, .progress-striped .bar-warning {
+	#gradient > .striped(@orange);
+}
+.progress-inverse .bar {
+	background-color: @templateDark;
+	border-color: @templateDark;
+}
+.progress-inverse.progress-striped .bar {
+	#gradient > .striped(@templateDark);
+}

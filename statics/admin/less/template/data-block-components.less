@@ -1,0 +1,60 @@
+//
+// Chromatron data block components
+// --------------------------------------------------
+
+
+.data-block header {
+	h2 + .btn,
+	h2 + .btn-group,
+	.data-header-actions {
+		float: right;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		.clearfix();
+	}
+	.data-header-actions > li {
+		float: left;
+		display: block;
+		& + li {
+			margin-left: 15px;
+		}
+		& > a {
+			color: @gray;
+			text-decoration: none;
+			&:hover {
+				color: @templateColor;
+				text-decoration: none;
+			}
+			&:focus {
+				outline: none;
+			}
+		}
+		.loading {
+			display: block;
+			margin-top: 4px;
+		}
+	}
+	.data-header-actions.tabs > li,
+	.data-header-actions > li.tabs {
+		margin-top: 8px;
+		& > a {
+			padding-bottom: 10px;
+		}
+		&.active > a {
+			color: @templateColor;
+			background-position: bottom center;
+			background-repeat: no-repeat;
+			background-image: url("@{headerTabCaret}");
+		}
+	}
+	.dropdown-menu {
+		left: auto;
+		right: 0;
+		top: 30px;
+	}
+}
+.data-block.nested header .data-header-actions.tabs > li.active > a,
+.data-block.nested header .data-header-actions > li.tabs.active > a {
+	background-image: url("@{headerTabCaretNested}");
+}
