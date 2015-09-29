@@ -35,6 +35,13 @@
           </div>
 
           <div class="control-group">
+            <?php echo form_label('URL do Vídeo', 'cas_video', array('class' => 'control-label')); ?>
+            <div class="controls">
+              <?php echo form_input(array('id' => 'cas_video', 'name' => 'cas_video', 'class' => 'input-xlarge'), set_value('cas_video')); ?>
+            </div>
+          </div>
+
+          <div class="control-group">
             <?php echo form_label('Ordem', 'cas_ordem', array('class' => 'control-label')); ?>
             <div class="controls">
               <?php echo form_input(array('id' => 'cas_ordem', 'name' => 'cas_ordem', 'class' => 'input-xlarge'), set_value('cas_ordem')); ?>

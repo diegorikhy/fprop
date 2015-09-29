@@ -88,10 +88,16 @@
                   <ul>
               <?php endif; ?>
 
-                <li style="background-image: url(<?php echo base_url() . 'uploads/cases/' . $item->cas_thumb; ?>)">
+                <li style="background-image: url(<?php if ($item->cas_foto) echo base_url() . 'uploads/cases/' . $item->cas_foto; else echo base_url() . 'uploads/cases/' . $item->cas_thumb; ?>)">
+                  <?php if($item->cas_video != "") : ?>
+                  <a href="<?php echo $item->cas_video; ?>" rel="full[cases]" title="<?php echo $item->cas_titulo; ?>">
+                    <h2><?php echo $item->cas_titulo; ?></h2>
+                  </a>
+                  <?php else : ?>
                   <a href="<?php echo base_url() . 'uploads/cases/' . $item->cas_thumb; ?>" rel="full[cases]" title="<?php echo $item->cas_titulo; ?>">
                     <h2><?php echo $item->cas_titulo; ?></h2>
                   </a>
+                  <?php endif; ?>
                 </li>
 
               <?php $count++; ?>

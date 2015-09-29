@@ -85,6 +85,7 @@ class cCases extends MY_Main {
     $insert = array(
       array('cas_ordem', $ordem),
       array('cas_titulo', $this->input->post('cas_titulo')),
+      array('cas_video', $this->input->post('cas_video')),
       );
 
     $settings = array(
@@ -128,6 +129,7 @@ class cCases extends MY_Main {
       'thumb_height'    => '220',
       'thumb_id'        => '',
       'thumb_ratio'     => TRUE,
+      'thumb_crop'      => TRUE,
       'thumb_campo'     => 'cas_foto',
       /* TABELA E OPERACOES */
       'tabela'          => 'tb_cases',
@@ -168,6 +170,7 @@ class cCases extends MY_Main {
         // # load view
     $this->data['cas_titulo'] = $this->m_crud->get_rowSpecific('tb_cases', 'cas_id', $idEntry, 1, 'cas_titulo');
     $this->data['cas_ordem'] = $this->m_crud->get_rowSpecific('tb_cases', 'cas_id', $idEntry, 1, 'cas_ordem');
+    $this->data['cas_video'] = $this->m_crud->get_rowSpecific('tb_cases', 'cas_id', $idEntry, 1, 'cas_video');
     $this->data['cas_descricao'] = $this->m_crud->get_rowSpecific('tb_cases', 'cas_id', $idEntry, 1, 'cas_descricao');
     $this->data['cas_thumb'] = $this->m_crud->get_rowSpecific('tb_cases', 'cas_id', $idEntry, 1, 'cas_thumb');
     $this->data['cas_id'] = $idEntry;
@@ -190,7 +193,8 @@ class cCases extends MY_Main {
 
     $insert = array(
       array('cas_ordem', $ordem),
-      array('cas_titulo', $this->input->post('cas_titulo'))
+      array('cas_titulo', $this->input->post('cas_titulo')),
+      array('cas_video', $this->input->post('cas_video')),
       );
 
     $settings = array(

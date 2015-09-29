@@ -580,6 +580,9 @@ div.dark_rounded {
     .pp_fade {
       border-radius: .1em;
       border: .4em solid $cinza;
+      #pp_full_res {
+        overflow: hidden;
+      }
     }
   }
   .pp_details {

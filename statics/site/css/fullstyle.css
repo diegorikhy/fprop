@@ -708,6 +708,8 @@ div.dark_rounded .pp_previous span {
 div.dark_rounded .pp_content .pp_fade {
   border-radius: .1em;
   border: 0.4em solid #8C8C8C; }
+  div.dark_rounded .pp_content .pp_fade #pp_full_res {
+    overflow: hidden; }
 div.dark_rounded .pp_details {
   margin: 1.5em 0 1em -.3em; }
 div.dark_rounded .pp_description {
