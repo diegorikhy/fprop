@@ -9,14 +9,7 @@
   <!-- Breadcrumbs -->
 
   <h1><span class="awe-bolt"></span> Cases de Sucesso</h1>
-
-    <!--
-    ***********************************************************************************************
-     AVISOS
-    ***********************************************************************************************
-  -->
   <?php include("avisos.php"); ?>
-
 
   <!-- Grid row -->
   <div class="row-fluid">
@@ -51,9 +44,7 @@
           <div class="control-group">
             <?php echo form_label('Imagem', 'imagem'); ?>
             <div class="controls">
-              <input type="file" name="files[1]" />
-              <input type="file" name="files[2]" />
-              <!-- <input type="file" name="userfile" size="20" /> -->
+              <input type="file" name="userfile" size="20" />
             </div>
           </div>
 
@@ -92,8 +83,7 @@
               <th>Ordem</th>
               <th>Título</th>
               <th>Thumb</th>
-              <th>Criado em</th>
-              <th>Modificado em</th>
+              <th>Miniatura</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -103,10 +93,14 @@
                 <td class="center"><?php echo $item->cas_ordem; ?></td>
                 <td class="center"><?php echo $item->cas_titulo; ?></td>
                 <td class="center"><img src="<?php echo base_url() . 'uploads/cases/' . $item->cas_thumb; ?>" width="100px" /></td>
-                <td class="center"><?php echo $this->my_date->datetime($item->criado, 'justDate'); ?></td>
-                <td class="center"><?php echo $this->my_date->datetime($item->modificado, 'justDate'); ?></td>
+                <td class="center">
+                  <?php if($item->cas_foto != ''): ?>
+                    <img src="<?php echo base_url() . 'uploads/cases/' . $item->cas_foto; ?>" width="100px" />
+                  <?php endif; ?>
+                </td>
                 <td>
                   <div class="btn-group-datatable">
+                    <a href="<?php echo base_url() . 'cases/cCases/cadastrarMiniatura/' . $item->cas_id; ?>" class="btn btn-small"><span class="icon-picture"></span> Miniatura</a>
                     <a href="<?php echo base_url() . 'cases/cCases/editar/' . $item->cas_id; ?>" class="btn btn-small"><span class="icon-pencil"></span></a>
                     <a href="<?php echo base_url() . 'cases/cCases/deletar/' . $item->cas_id; ?>" class="btn btn-small"><span class="icon-trash"></span></a>
                   </div>

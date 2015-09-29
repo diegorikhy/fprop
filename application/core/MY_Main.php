@@ -34,7 +34,7 @@ class MY_Main extends CI_Controller {
         // # --
         // # Início
         // # --
-        /* 		$this->load->library('extranet');
+        /*    $this->load->library('extranet');
           $this->load->model('m_extranet');
          */
 
@@ -123,251 +123,232 @@ class MY_Main extends CI_Controller {
       return $this->data['scripts'];
     }
 
-    /* ----------------------------------------------
-      CRUD
-     * TYPE: INSERT
-     * FEATURED: ANY
-      ---------------------------------------------- */
+  /* ----------------------------------------------
+   * CRUD
+   * TYPE: INSERT
+   * FEATURED: ANY
+   * ---------------------------------------------- */
+  public function crud_addData(array $validation, array $insert, array $settings) {
 
-      public function crud_addData(array $validation, array $insert, array $settings) {
+    foreach ($validation as $validation_key => $validation_value) {
+      $this->form_validation->set_rules($validation_value[0], strtoupper($validation_value[1]), $validation_value[2]);
+    }
 
-        foreach ($validation as $validation_key => $validation_value) {
-          $this->form_validation->set_rules($validation_value[0], strtoupper($validation_value[1]), $validation_value[2]);
-        }
+    if ($this->form_validation->run() == TRUE) {
 
-        if ($this->form_validation->run() == TRUE) {
-
-          $newArr = array();
-          foreach ($insert as $teste) {
-            $newArr[$teste[0]] = $teste[1];
-          }
-
-          $newArr['criado'] = date("Y-m-d H:i:s");
-
-          $this->m_crud->insert($settings['tabela'], $newArr);
-          redirect(base_url() . $settings['retorno_funcao']);
-        } else {
-          $this->session->set_flashdata('erroValidacaoFormulario', validation_errors());
-          $this->loadtemplate($settings['retorno_arquivo'], $this->data);
-        }
+      $newArr = array();
+      foreach ($insert as $teste) {
+        $newArr[$teste[0]] = $teste[1];
       }
 
-    /* ----------------------------------------------
-      CRUD
-     * TYPE: EDIT
-     * FEATURED: ANY
-      ---------------------------------------------- */
+      $newArr['criado'] = date("Y-m-d H:i:s");
 
-      public function crud_editData(array $validation, array $insert, array $settings) {
+      $this->m_crud->insert($settings['tabela'], $newArr);
+      redirect(base_url() . $settings['retorno_funcao']);
+    } else {
+      $this->session->set_flashdata('erroValidacaoFormulario', validation_errors());
+      $this->loadtemplate($settings['retorno_arquivo'], $this->data);
+    }
+  }
 
-        foreach ($validation as $validation_key => $validation_value) {
-          $this->form_validation->set_rules($validation_value[0], strtoupper($validation_value[1]), $validation_value[2]);
-        }
+  /* ----------------------------------------------
+   * CRUD
+   * TYPE: EDIT
+   * FEATURED: ANY
+   * ---------------------------------------------- */
+  public function crud_editData(array $validation, array $insert, array $settings) {
+
+    foreach ($validation as $validation_key => $validation_value) {
+      $this->form_validation->set_rules($validation_value[0], strtoupper($validation_value[1]), $validation_value[2]);
+    }
 
 
-        if ($this->form_validation->run() == TRUE) {
+    if ($this->form_validation->run() == TRUE) {
 
-          $newArr = array();
-          foreach ($insert as $teste) {
-            $newArr[$teste[0]] = $teste[1];
-          }
-          $newArr['modificado'] = date("Y-m-d H:i:s");
-
-          $this->m_crud->update($settings['tabela'], $settings['referenceValue'], $settings['entryValue'], $newArr);
-          redirect(base_url() . $settings['retorno_funcao'] . '/' . $settings['entryValue']);
-        } else {
-          $this->session->set_flashdata('erroValidacaoFormulario', validation_errors());
-          redirect(base_url() . $settings['retorno_funcao'] . '/' . $settings['entryValue']);
-        }
+      $newArr = array();
+      foreach ($insert as $teste) {
+        $newArr[$teste[0]] = $teste[1];
       }
-    /* ----------------------------------------------
-      CRUD
-     * TYPE: INSERT
-     * FEATURED: GALLERY
-      ---------------------------------------------- */
+      $newArr['modificado'] = date("Y-m-d H:i:s");
 
-      public function crud_addGallery(array $validation, array $insert, array $settings) {
+      $this->m_crud->update($settings['tabela'], $settings['referenceValue'], $settings['entryValue'], $newArr);
+      redirect(base_url() . $settings['retorno_funcao'] . '/' . $settings['entryValue']);
+    } else {
+      $this->session->set_flashdata('erroValidacaoFormulario', validation_errors());
+      redirect(base_url() . $settings['retorno_funcao'] . '/' . $settings['entryValue']);
+    }
+  }
 
-        foreach ($validation as $validation_key => $validation_value) {
-          $this->form_validation->set_rules($validation_value[0], strtoupper($validation_value[1]), $validation_value[2]);
-        }
+  /* ----------------------------------------------
+   * CRUD
+   * TYPE: INSERT
+   * FEATURED: GALLERY
+   * ---------------------------------------------- */
+  public function crud_addGallery(array $validation, array $insert, array $settings) {
 
-        if ($this->form_validation->run() == TRUE) {
+    foreach ($validation as $validation_key => $validation_value) {
+      $this->form_validation->set_rules($validation_value[0], strtoupper($validation_value[1]), $validation_value[2]);
+    }
 
-          $newArr = array();
-          foreach ($insert as $teste) {
-            $newArr[$teste[0]] = $teste[1];
-          }
+    if ($this->form_validation->run() == TRUE) {
 
-          $thumb = $this->uploadfoto($settings['thumb_diretorio'], $settings['thumb_retorno'], $settings['thumb_width'], $settings['thumb_height'], $settings['thumb_id'], $settings['thumb_ratio'], $settings['thumb_crop']);
-
-          $newArr[$settings['thumb_campo']] = $thumb;
-          $newArr['criado'] = date("Y-m-d H:i:s");
-
-          $this->m_crud->insert($settings['tabela'], $newArr);
-          redirect(base_url() . $settings['retorno_funcao']);
-        } else {
-          $this->session->set_flashdata('erroValidacaoFormulario', validation_errors());
-
-          $this->data['titleSection'] = $settings['titleSection'];
-          $this->data['subtitleSection'] = $settings['subtitleSection'];
-          redirect(base_url() . $settings['retorno_funcao']);
-        }
+      $newArr = array();
+      foreach ($insert as $teste) {
+        $newArr[$teste[0]] = $teste[1];
       }
 
-    /* ----------------------------------------------
-      CRUD
-     * TYPE: EDIT
-     * FEATURED: GALLERY
-      ---------------------------------------------- */
+      $thumb = $this->uploadfoto($settings['thumb_diretorio'], $settings['thumb_retorno'], $settings['thumb_width'], $settings['thumb_height'], $settings['thumb_id'], $settings['thumb_ratio'], $settings['thumb_crop']);
 
-      public function crud_editGallery(array $validation, array $insert, array $settings) {
+      $newArr[$settings['thumb_campo']] = $thumb;
+      $newArr['criado'] = date("Y-m-d H:i:s");
+
+      $this->m_crud->insert($settings['tabela'], $newArr);
+      redirect(base_url() . $settings['retorno_funcao']);
+    } else {
+      $this->session->set_flashdata('erroValidacaoFormulario', validation_errors());
+
+      $this->data['titleSection'] = $settings['titleSection'];
+      $this->data['subtitleSection'] = $settings['subtitleSection'];
+      redirect(base_url() . $settings['retorno_funcao']);
+    }
+  }
+
+  /* ----------------------------------------------
+   * CRUD
+   * TYPE: EDIT
+   * FEATURED: GALLERY
+   * ---------------------------------------------- */
+  public function crud_editGallery(array $validation, array $insert, array $settings) {
 
 
-        /* VALIDAÇÃO DAS REGRAS DO FORMULÁRIO */
-        foreach ($validation as $validation_key => $validation_value) {
-          $this->form_validation->set_rules($validation_value[0], strtoupper($validation_value[1]), $validation_value[2]);
-        }
+    /* VALIDAÇÃO DAS REGRAS DO FORMULÁRIO */
+    foreach ($validation as $validation_key => $validation_value) {
+      $this->form_validation->set_rules($validation_value[0], strtoupper($validation_value[1]), $validation_value[2]);
+    }
 
 
-        if ($this->form_validation->run() == TRUE) {
-
+    if ($this->form_validation->run() == TRUE) {
 
             // SE O USUÁRIO SELECIONAR A IMAGEM PARA UPLOAD
-          if (strlen($_FILES['userfile']['name']) > 0) {
+      if (strlen($_FILES['userfile']['name']) > 0) {
 
-            /* CAPTURANDO VALOR DOS CAMPOS */
-            $newArr = array();
-            foreach ($insert as $teste) {
-              $newArr[$teste[0]] = $teste[1];
-            }
-            $newArr['modificado'] = date("Y-m-d H:i:s");
-
-            /* DELETANDO FOTO ATUAL DO SERVIDOR */
-            $this->m_crud->delete_file($settings['tabela'], $settings['referenceValue'], $settings['entryValue'], $settings['thumb_diretorio'], $settings['thumb_campo']);
-
-            /* ENVIO DE IMAGEM */
-            $thumb = $this->uploadfoto($settings['thumb_diretorio'], $settings['thumb_retorno'], $settings['thumb_width'], $settings['thumb_height'], $settings['thumb_id'], $settings['thumb_ratio'], $settings['thumb_crop']);
-            $newArr[$settings['thumb_campo']] = $thumb;
-
-            $this->m_crud->update($settings['tabela'], $settings['referenceValue'], $settings['entryValue'], $newArr);
-            redirect(base_url() . $settings['retorno_funcao'] . '/' . $settings['entryValue']);
-          }
-
-
-            // SE O USUÁRIO NÃO SELECIONAR A IMAGEM PARA UPLOAD
-          else {
-
-            $newArr = array();
-            foreach ($insert as $teste) {
-              $newArr[$teste[0]] = $teste[1];
-            }
-            $newArr['modificado'] = date("Y-m-d H:i:s");
-
-            $this->m_crud->update($settings['tabela'], $settings['referenceValue'], $settings['entryValue'], $newArr);
-            redirect(base_url() . $settings['retorno_funcao'] . '/' . $settings['entryValue']);
-          }
+        /* CAPTURANDO VALOR DOS CAMPOS */
+        $newArr = array();
+        foreach ($insert as $teste) {
+          $newArr[$teste[0]] = $teste[1];
         }
-        // FIM DE VALIDAÇÃO DO FORMULÁRIO
-        else {
-          $this->session->set_flashdata('validation_errors', validation_errors());
-          redirect(base_url() . $settings['retorno_funcao'] . '/' . $settings['entryValue']);
-        }
+        $newArr['modificado'] = date("Y-m-d H:i:s");
+
+        /* DELETANDO FOTO ATUAL DO SERVIDOR */
+        $this->m_crud->delete_file($settings['tabela'], $settings['referenceValue'], $settings['entryValue'], $settings['thumb_diretorio'], $settings['thumb_campo']);
+
+        /* ENVIO DE IMAGEM */
+        $thumb = $this->uploadfoto($settings['thumb_diretorio'], $settings['thumb_retorno'], $settings['thumb_width'], $settings['thumb_height'], $settings['thumb_id'], $settings['thumb_ratio'], $settings['thumb_crop']);
+        $newArr[$settings['thumb_campo']] = $thumb;
+
+        $this->m_crud->update($settings['tabela'], $settings['referenceValue'], $settings['entryValue'], $newArr);
+        redirect(base_url() . $settings['retorno_funcao'] . '/' . $settings['entryValue']);
       }
-
-    /*
-      UPLOADFOTO
-      ( FUNÇÃO PARA ENVIAR FOTO )
-     */
-
-      public function uploadfoto($diretorio, $retorno, $width, $height, $id, $ratio, $crop) {
-
-        $config['upload_path'] = './uploads/' . $diretorio;
-        $config['allowed_types'] = 'gif|jpg|jpeg|png|tiff|GIF|JPG|JPEG|PNG';
-        $config['max_size'] = '10000';
-        $config['max_width'] = '7000';
-        $config['max_height'] = '7000';
-        $config['overwrite'] = FALSE;
-
-        $this->load->library('upload', $config);
-
-        // if (!$this->upload->do_upload()) {
-        if (!$this->upload->do_multi_upload("files")) {
-          $error = array('error' => $this->upload->display_errors());
-          $this->session->set_flashdata('erroUploadImagem', $error['error']);
-            //var_dump($error);
-          redirect(base_url() . $retorno . '/' . $id, 'refresh');
-        } else {
-
-          $data = array('upload_data' => $this->upload->data());
-
-          // var_dump($data);
-          // print_r($this->upload->data());
-          // print_r("--------------------------------\n");
-
-          print_r($this->upload->get_multi_upload_data());
-
-          $config['image_library'] = 'gd2';
-          $config['source_image'] = './uploads/' . $diretorio . "/" . $data['upload_data']['file_name'];
-          $config['create_thumb'] = FALSE;
-          $config['maintain_ratio'] = $ratio;
-          $config['width'] = $width;
-          $config['height'] = $height;
-
-          if ($crop) {
-            $dim = (intval($data['upload_data']["image_width"]) / intval($data['upload_data']["image_height"])) - ($config['width'] / $config['height']);
-
-                // AJUSTAR A MENOR DIMENSAO E CALCULAR PONTO DE CORTE PARA FICAR NO CENTRO
-            if ($dim > 0) {
-              $x_axis = ($config['height'] * $data['upload_data']["image_width"]) / $data['upload_data']["image_height"];
-              $x_axis = (int) (($x_axis - $config['width']) / 2);
-              $y_axis = 0;
-              $config['master_dim'] = "height";
-            } else {
-              $y_axis = ($config['width'] * $data['upload_data']["image_height"]) / $data['upload_data']["image_width"];
-              $y_axis = (int) (($y_axis - $config['height']) / 2);
-              $x_axis = 0;
-              $config['master_dim'] = "width";
-            }
-
-            $config['x_axis'] = $x_axis;
-            $config['y_axis'] = $y_axis;
-
-                // REDIMENCIONANDO REDIMENCIONANDO
-            $this->load->library('image_lib', $config);
-            $this->image_lib->resize();
-
-                // CORTANDO IMAGEM
-            $config['maintain_ratio'] = FALSE;
-            $this->image_lib->initialize($config);
-            $this->image_lib->crop();
-          } else {
-                // REDIMENCIONANDO REDIMENCIONANDO
-            $this->load->library('image_lib', $config);
-            $this->image_lib->resize();
-          }
-
-          if ($data['upload_data']['is_image'] == TRUE) {
-            return $data;
-          }
+          // SE O USUÁRIO NÃO SELECIONAR A IMAGEM PARA UPLOAD
+      else {
+        $newArr = array();
+        foreach ($insert as $teste) {
+          $newArr[$teste[0]] = $teste[1];
         }
+        $newArr['modificado'] = date("Y-m-d H:i:s");
+        $this->m_crud->update($settings['tabela'], $settings['referenceValue'], $settings['entryValue'], $newArr);
+        redirect(base_url() . $settings['retorno_funcao'] . '/' . $settings['entryValue']);
       }
-
-
-    /*
-      ------------------------------------------------------------
-      MONTAR DROPDOWN
-      - Retorna os dados no formato específico pra montar um combo
-      via codeigniter;
-      ------------------------------------------------------------
-     */
-
-      function montarDropdown($dados, $primeiroOption, $indice, $valor) {
-        $arrAux = array('' => $primeiroOption);
-        foreach ($dados as $key => $value) {
-          $arrAux[$value->$indice] = $value->$valor;
-        }
-        return $arrAux;
-      }
-
     }
+        // FIM DE VALIDAÇÃO DO FORMULÁRIO
+    else {
+      $this->session->set_flashdata('validation_errors', validation_errors());
+      redirect(base_url() . $settings['retorno_funcao'] . '/' . $settings['entryValue']);
+    }
+  }
+
+  /*
+   * UPLOADFOTO
+   * ( FUNÇÃO PARA ENVIAR FOTO )
+   */
+  public function uploadfoto($diretorio, $retorno, $width, $height, $id, $ratio, $crop) {
+
+    $config['upload_path'] = './uploads/' . $diretorio;
+    $config['allowed_types'] = 'gif|jpg|jpeg|png|tiff|GIF|JPG|JPEG|PNG';
+    $config['max_size'] = '10000';
+    $config['max_width'] = '7000';
+    $config['max_height'] = '7000';
+    $config['overwrite'] = FALSE;
+
+    $this->load->library('upload', $config);
+
+    if (!$this->upload->do_upload()) {
+      $error = array('error' => $this->upload->display_errors());
+      $this->session->set_flashdata('erroUploadImagem', $error['error']);
+      redirect(base_url() . $retorno . '/' . $id, 'refresh');
+    } else {
+
+      $data = array('upload_data' => $this->upload->data());
+
+      $config['image_library'] = 'gd2';
+      $config['source_image'] = './uploads/' . $diretorio . "/" . $data['upload_data']['file_name'];
+      $config['create_thumb'] = FALSE;
+      $config['maintain_ratio'] = $ratio;
+      $config['width'] = $width;
+      $config['height'] = $height;
+
+      if ($crop) {
+        $dim = (intval($data['upload_data']["image_width"]) / intval($data['upload_data']["image_height"])) - ($config['width'] / $config['height']);
+
+        // AJUSTAR A MENOR DIMENSAO E CALCULAR PONTO DE CORTE PARA FICAR NO CENTRO
+        if ($dim > 0) {
+          $x_axis = ($config['height'] * $data['upload_data']["image_width"]) / $data['upload_data']["image_height"];
+          $x_axis = (int) (($x_axis - $config['width']) / 2);
+          $y_axis = 0;
+          $config['master_dim'] = "height";
+        } else {
+          $y_axis = ($config['width'] * $data['upload_data']["image_height"]) / $data['upload_data']["image_width"];
+          $y_axis = (int) (($y_axis - $config['height']) / 2);
+          $x_axis = 0;
+          $config['master_dim'] = "width";
+        }
+
+        $config['x_axis'] = $x_axis;
+        $config['y_axis'] = $y_axis;
+
+        // REDIMENCIONANDO REDIMENCIONANDO
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+
+        // CORTANDO IMAGEM
+        $config['maintain_ratio'] = FALSE;
+        $this->image_lib->initialize($config);
+        $this->image_lib->crop();
+      } else {
+        // REDIMENCIONANDO REDIMENCIONANDO
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+      }
+
+      if ($data['upload_data']['is_image'] == TRUE) {
+        return $data['upload_data']['file_name'];
+      }
+    }
+  }
+
+  /*
+   * ------------------------------------------------------------
+   * MONTAR DROPDOWN
+   * - Retorna os dados no formato específico pra montar um combo
+   * via codeigniter;
+   * ------------------------------------------------------------
+   */
+  function montarDropdown($dados, $primeiroOption, $indice, $valor) {
+    $arrAux = array('' => $primeiroOption);
+    foreach ($dados as $key => $value) {
+      $arrAux[$value->$indice] = $value->$valor;
+    }
+    return $arrAux;
+  }
+
+}
