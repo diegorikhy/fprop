@@ -27,6 +27,8 @@
           <?php echo form_open_multipart('cases/cCases/gravarMiniatura/' . $cas_id, '') ?>
           <?php echo form_fieldset('Formulário'); ?>
 
+          <div style="padding: 0 0 30px; font-size: 16px;">A miniatura deve ter 450px de largura e 220px de altura!</div>
+
           <div class="control-group">
             <?php echo form_label('Título', 'cas_titulo', array('class' => 'control-label')); ?>
             <div class="controls">
